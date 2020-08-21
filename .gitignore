@@ -5,3 +5,7 @@ node_modules/
 # Ignore macOS files
 *.DS_Store
 
+# Development files
+*boot_with_password.py
+*main_with_password.py
+
