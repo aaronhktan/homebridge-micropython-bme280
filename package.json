@@ -1,0 +1,33 @@
+{
+  "name": "homebridge-micropython-bme280",
+  "version": "0.0.1",
+  "description": "A Homebridge plugin for the BME280 temperature and pressure sensor connected to a device running MicroPython",
+  "private": true,
+  "gypfile": true,
+  "dependencies": {
+    "fakegato-history": "^0.5.6",
+    "moment": "^2.4.0",
+    "mqtt": "^3.0.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronhktan/homebridge-micropython-bme280.git"
+  },
+  "keywords": [
+    "homebridge-plugin"
+  ],
+  "engines": {
+    "homebridge": ">=0.2.0",
+    "node": ">=0.12.0"
+  },
+  "author": "Aaron Tan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aaronhktan/homebridge-microtpython-bme280/issues"
+  },
+  "homepage": "https://github.com/aaronhktan/homebridge-micropython-bme280#readme"
+}
