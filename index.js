@@ -54,7 +54,7 @@ function BME280Accessory(log, config) {
   setInterval(() => {
     if (moment().diff(this.lastUpdated, 'minutes') >= this.timeout) {
       this.log(`No messages received for ${this.timeout} minute(s), assuming error!`);
-      this.temperatureService.getCharacteristic(Characteristic.CurrentTempererature)
+      this.temperatureService.getCharacteristic(Characteristic.CurrentTemperature)
         .updateValue(Error());
       this.humidityService.getCharacteristic(Characteristic.CurrentRelativeHumidity)
         .updateValue(Error());
@@ -63,37 +63,37 @@ function BME280Accessory(log, config) {
 }
 
 BME280Accessory.prototype.onMQTTMessage = function(topic, message) {
-  this.log(`Received measurement: ${parseInt(message)} on topic ${topic}`);
+  this.log(`Received measurement: ${parseFloat(message)} on topic ${topic}`);
   switch (topic) {
     case this.pressureTopic: {
       this.temperatureService.getCharacteristic(CustomCharacteristic.AtmosphericPressureLevel)
-        .updateValue(parseInt(message));
+        .updateValue(parseFloat(message));
       if (this.enableFakeGato) {
         this.fakeGatoHistoryService.addEntry({
           time: moment().unix(),
-          pressure: parseInt(message),
+          pressure: parseFloat(message),
         });
       }
       break;
     }
     case this.temperatureTopic: {
       this.temperatureService.getCharacteristic(Characteristic.CurrentTemperature)
-        .updateValue(parseInt(message));
+        .updateValue(parseFloat(message));
       if (this.enableFakeGato) {
         this.fakeGatoHistoryService.addEntry({
           time: moment().unix(),
-          temp: parseInt(message),
+          temp: parseFloat(message),
         });
       }
       break;
     }
     case this.humidityTopic: {
       this.humidityService.getCharacteristic(Characteristic.CurrentRelativeHumidity)
-        .updateValue(parseInt(message));
+        .updateValue(parseFloat(message));
       if (this.enableFakeGato) {
         this.fakeGatoHistoryService.addEntry({
           time: moment().unix(),
-          humidity: parseInt(message),
+          humidity: parseFloat(message),
         });
       }
       break;
