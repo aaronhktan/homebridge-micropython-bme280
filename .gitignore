@@ -8,4 +8,5 @@ node_modules/
 # Development files
 *boot_with_password.py
 *main_with_password.py
+*flash/
 
