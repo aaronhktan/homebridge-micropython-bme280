@@ -119,7 +119,7 @@ BME280Accessory.prototype.setUpMQTT = function() {
   this.mqttClient = mqtt.connect(this.mqttUrl);
 
   this.mqttClient.on('connect', () => {
-    this.log(`MQTT client connected to ${this.mqttURL}`);
+    this.log(`MQTT client connected to ${this.mqttUrl}`);
     this.mqttClient.subscribe(this.pressureTopic, (err) => {
       if (!err) {
         this.log(`MQTT client subscribed to ${this.pressureTopic}`);
